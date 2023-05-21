@@ -1,0 +1,45 @@
+                            DAY-3 Assessment
+
+1. how to compare two JSON have the same properties without order?
+        var obj1 = { name: "Person 1", age:5 };
+        var obj2 = { age:5, name: "Person 1" };
+
+let obj1 = { name: "person 1", age: 5 };
+let obj2 = { age: 5, name: "person 1" };
+
+// Step 1: Convert objects to strings
+let obj1String = JSON.stringify(obj1);
+let obj2String = JSON.stringify(obj2);
+
+// Step 2: Sort the strings
+let sortedObj1 = obj1String.split("").sort().join("");
+let sortedObj2 = obj2String.split("").sort().join("");
+
+// Step 3: Compare the sorted strings
+let areEqual = sortedObj1 === sortedObj2;
+
+console.log(areEqual); // Output: true
+
+2.Use the rest countries' API URL->https://restcountries.com/v3.1/all and display all the country flags in the console:
+// PRINTING ALL FLAG DATA IN THE CONSOLE
+ function printData() {
+  const countries = JSON.parse(this.responseText);
+  countries.forEach((coun) => console.log(coun.flags.png));
+}
+
+var request = new XMLHttpRequest();
+request.addEventListener("load", printData);
+request.open("GET","https://restcountries.com/v3.1/all");
+request.send(); 
+
+3.Use the same rest countries and print all countries names, regions, sub-region and populations:
+// PRINTING ALL all countries names, regions, sub-region and populations DATA IN THE CONSOLE
+ function printData() {
+  const countries = JSON.parse(this.responseText);
+  countries.forEach((coun) => console.log(coun.name.common,coun.region,coun.subregion,coun.population));
+}
+
+var request = new XMLHttpRequest();
+request.addEventListener("load", printData);
+request.open("GET","https://restcountries.com/v3.1/all");
+request.send(); 
